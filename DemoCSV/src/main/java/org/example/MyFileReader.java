@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public  class MyFileReader {
-    public CsvObjectStructure[] read(File file) throws  Exception{
+    public CsvObjectStructure[] read(String[][] attributes, File file) throws  Exception{
         CsvObjectStructure csvObject;
         String[] records;
         CSVReader csvReader = null;
@@ -29,6 +29,15 @@ public  class MyFileReader {
             csvReader = new CSVReaderBuilder(new FileReader(file)) // Assuming 'file' is a File object
                     .withCSVParser(csvParser) // Set the created CSVParser
                     .build();
+
+            // Extracted the attributes from csv file
+            String[] attributeArray = csvReader.readNext();
+            attributeArray[0] = attributeArray[0].trim().replace("\uFEFF", "");
+            for (int i = 0; i < attributeArray.length; i++) {
+                if (!(attributes[i][0].equals(attributeArray[i]))){
+                    throw new Exception("Expected Attribute: " + attributes[i][0] + ", Received Attribute " + attributeArray[i]);
+                }
+            }
 
             while((records = csvReader.readNext()) != null){
                 if(records.length == 9){
