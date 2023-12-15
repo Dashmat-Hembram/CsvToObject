@@ -9,7 +9,9 @@ public class Main {
         String filePath = "project.csv";
         File file = new File(filePath);
         MyFileReader reader = new MyFileReader();
-        CsvObjectStructure[] allrecords = reader.read(file);
+        String[][] attributes = {{"Id","Integer"},{"Idea Name","String"},{"Idea description","String"},{"Vote Count","int"},{"Topic 1","String"},{"Topic 2","String"},{"Topic 3","String"},{"Status","String"},{"Author Name","String"},{"Author Email","String"},};
+
+        CsvObjectStructure[] allrecords = reader.read(attributes,file);
 
         for(CsvObjectStructure records: allrecords){
             System.out.println("Idea Name : " + records.getIdeaName());
