@@ -14,6 +14,7 @@ public class Main {
         CsvObjectStructure[] allrecords = reader.read(attributes,file);
 
         for(CsvObjectStructure records: allrecords){
+            System.out.println("ID : " + records.getId());
             System.out.println("Idea Name : " + records.getIdeaName());
             System.out.println("Idea Desc : " + records.getIdeaDesc());
             System.out.println("Vote Count : " + records.getVoteCount());

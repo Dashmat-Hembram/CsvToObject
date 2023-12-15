@@ -40,28 +40,31 @@ public  class MyFileReader {
             }
 
             while((records = csvReader.readNext()) != null){
-                if(records.length == 9){
-                    String ideaName = records[0];
-                    String ideaDesc = records[1];
-                    String voteCount = records[2];
-                    String topic1 = records[3];
-                    String topic2 = records[4];
-                    String topic3 = records[5];
-                    String status = records[6];
-                    String authorsName = records[7];
-                    String authorsEmail = records[8];
+                if(records.length == 10){
+                    String id = records[0];
+                    String ideaName = records[1];
+                    String ideaDesc = records[2];
+                    String voteCount = records[3];
+                    String topic1 = records[4];
+                    String topic2 = records[5];
+                    String topic3 = records[6];
+                    String status = records[7];
+                    String authorsName = records[8];
+                    String authorsEmail = records[9];
 
                     try{
-                        int numericValue = Integer.parseInt(voteCount);
+                        int numericVoteCount = Integer.parseInt(voteCount);
+                        int numericId = Integer.parseInt(voteCount);
 //                        System.out.println("Idea Name: " + ideaName + " " +"Vote Count: " + numericValue                        );
 //                        System.out.println("Idea Description: " + ideaDesc);
 //                        System.out.println("Topic 1: " + topic1 + " " + "Topic 2: " + topic2 + " " + "Topic 3: " + topic3 +
 //                                " " + "Status: " + status + "Authors Name: " + authorsName + "Authors Email: " + authorsEmail);
 
                         csvObject = new CsvObjectStructure(
+                                numericId,
                                 ideaName,
                                 ideaDesc,
-                                numericValue,
+                                numericVoteCount,
                                 topic1,
                                 topic2,
                                 topic3,

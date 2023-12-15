@@ -3,6 +3,7 @@ package org.example;
 
 
 public class CsvObjectStructure {
+    private  int id;
     private String ideaName;
     private String ideaDesc;
     private int voteCount;
@@ -17,6 +18,7 @@ public class CsvObjectStructure {
 
     }
     public CsvObjectStructure(
+            int id,
             String ideaName,
             String ideaDesc,
             int voteCount,
@@ -28,6 +30,7 @@ public class CsvObjectStructure {
             String authorsEmail
             )
     {
+        this.id = id;
         this.ideaName= ideaName;
         this.ideaDesc = ideaDesc;
         this.voteCount = voteCount;
@@ -37,6 +40,14 @@ public class CsvObjectStructure {
         this.status = status;
         this.authorsName = authorsName;
         this.authorsEmail = authorsEmail;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getIdeaName(){
@@ -91,7 +102,6 @@ public class CsvObjectStructure {
     public  void setStatus(){
         this.status = status;
     }
-
     public String getAuthorsName(){
         return authorsName;
     }
